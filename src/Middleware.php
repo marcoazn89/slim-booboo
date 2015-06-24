@@ -14,9 +14,6 @@ class Middleware {
 	}
 
 	public function __invoke(\Psr\Http\Message\ServerRequestInterface $request, \Psr\Http\Message\ResponseInterface $response, $next) {
-		$app = $next;
-    $container = $app->getContainer();
-
     // Start BooBoo
 		BooBoo::setUp();
 
@@ -37,6 +34,6 @@ class Middleware {
 			};
 		};
 
-		return $app($request, $response);
+		return $next($request, $response);
 	}
 }
