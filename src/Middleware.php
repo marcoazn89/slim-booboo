@@ -1,5 +1,5 @@
 <?php
-namespace SlimBooBoo;
+namespace SlimBooboo;
 
 use BooBoo\BooBoo;
 
@@ -13,7 +13,7 @@ class Middleware {
 		}
 	}
 
-	public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next) {
+	public function __invoke(\Psr\Http\Message\ServerRequestInterface $request, \Psr\Http\Message\ResponseInterface $response, $next) {
 		$app = $next;
     $container = $app->getContainer();
 
@@ -23,7 +23,7 @@ class Middleware {
 			return function($request, $response, $exception) {
 
 				ob_start();
-				BooBoo\BooBoo::exceptionHandler($exception);
+				BooBoo::exceptionHandler($exception);
 				$buffer = ob_get_contents();
 				ob_end_clean();
 
