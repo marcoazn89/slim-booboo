@@ -1,0 +1,23 @@
+{
+    "name": "marcoazn89/slim-booboo",
+    "license": "MIT",
+    "description": "Booboo's integration for Slim3.0 framework",
+    "keywords": ["library", "error", "handling", "exception", "booboo", "slim", "php"],
+    "homepage": "https://github.com/marcoazn89/slim-booboo",
+    "authors": [
+        {
+            "name": "Marco A. Chang",
+            "homepage": "https://github.com/marcoazn89",
+            "role": "Software Engineer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "marcoazn89/booboo": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "SlimBooboo": "src/"
+        }
+    }
+}
