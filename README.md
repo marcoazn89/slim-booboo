@@ -14,10 +14,10 @@ $app->add(new \SlimBooboo\Middleware());
 Overwrite default templates
 ----------------------------
 ```php
-// config array overwrites the default error templates. Example:
+// configArray overwrites the default error templates. Example:
 $configArray= [
 	'html'	=>	'some/folder/html.php',
-	'json'	=>	'some/folder/json.php',
+	'json'	=>	'some/folder/json.php'
 ];
 
 $app->add(new \SlimBooboo\Middleware($configArray));
