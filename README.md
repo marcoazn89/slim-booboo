@@ -1,5 +1,5 @@
 # slim-booboo
-Booboo's integration for Slim3.0 framework
+[`BooBoo`](https://github.com/marcoazn89/booboo)'s integration for Slim3.0 framework
 
 Install via Composer
 ---------------------
@@ -26,8 +26,6 @@ $app->add(new \SlimBooboo\Middleware($configArray));
 Example
 --------
 ```php
-<?php
-
 require '../vendor/autoload.php';
 
 $app = new \Slim\App();
@@ -44,3 +42,5 @@ $app->get('/error/', function($req, $res, $arg) {
 
 $app->run();
 ```
+![BooBoo!](http://i.imgur.com/OGIQDiP.png?1)
+![BooBoo!](http://i.imgur.com/TXboLaP.png)
