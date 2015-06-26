@@ -5,7 +5,11 @@ use BooBoo\BooBoo;
 
 class Middleware {
 
-	public function __construct(array $defaultPaths = null) {
+	protected $app;
+
+	public function __construct($app, array $defaultPaths = null) {
+		$this->app = $app;
+
 		if( ! is_null($defaultPaths)) {
 			foreach($defaultPaths as $format => $path) {
 				BooBoo::defaultErrorPath($format, $path);
@@ -14,6 +18,8 @@ class Middleware {
 	}
 
 	public function __invoke(\Psr\Http\Message\ServerRequestInterface $request, \Psr\Http\Message\ResponseInterface $response, $next) {
+		$container = $this->app->getContainer();
+
     // Start BooBoo
 		BooBoo::setUp();
 
