@@ -1,7 +1,7 @@
 <?php
 namespace SlimBooboo;
 
-use BooBoo\BooBoo;
+use Exception\BooBoo;
 
 class Middleware {
 
@@ -36,7 +36,7 @@ class Middleware {
 				// By creating a new response object, all the headers set by BooBoo get resynced
 				$response = new \HTTP\Response();
 
-				return $response->overwrite($buffer);
+				return $response->withStatus(500)->overwrite($buffer);
 			};
 		};
 
