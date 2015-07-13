@@ -36,7 +36,7 @@ class Middleware {
 				// By creating a new response object, all the headers set by BooBoo get resynced
 				$response = new \HTTP\Response();
 
-				return $response->withStatus(500)->overwrite($buffer);
+				return $response->overwrite($buffer);
 			};
 		};
 
