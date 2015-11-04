@@ -7,8 +7,11 @@ class Middleware {
 
 	protected $app;
 
-	public function __construct($app, array $defaultPaths = null) {
+	public function __construct($app, \Psr\Log\LoggerInterface $logger = null, $lastAction = null, $ignore = [], array $defaultPaths = null) {
 		$this->app = $app;
+
+		// Start BooBoo
+		BooBoo::setUp($logger, $lastAction, $ignore);
 
 		if( ! is_null($defaultPaths)) {
 			foreach($defaultPaths as $format => $path) {
@@ -19,9 +22,6 @@ class Middleware {
 
 	public function __invoke(\Psr\Http\Message\ServerRequestInterface $request, \Psr\Http\Message\ResponseInterface $response, $next) {
 		$container = $this->app->getContainer();
-
-    // Start BooBoo
-		BooBoo::setUp();
 
 		// Overwrite the errorHandler
 		$container['errorHandler'] = function($c) {
