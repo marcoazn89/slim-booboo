@@ -7,11 +7,11 @@ class Middleware {
 
 	protected $app;
 
-	public function __construct($app, \Psr\Log\LoggerInterface $logger = null, $lastAction = null, $ignore = [], array $defaultPaths = null) {
+	public function __construct($app, array $defaultPaths = null, \Psr\Log\LoggerInterface $logger = null, $traceAlwaysOn = false, \Closure $lastAction = null, $ignore = []) {
 		$this->app = $app;
 
 		// Start BooBoo
-		BooBoo::setUp($logger, $lastAction, $ignore);
+		BooBoo::setUp($logger, $traceAlwaysOn, $lastAction, $ignore);
 
 		if( ! is_null($defaultPaths)) {
 			foreach($defaultPaths as $format => $path) {
@@ -28,15 +28,16 @@ class Middleware {
 			return function($request, $response, $exception) {
 
 				// Store the BooBoo error body response in a buffer
-				ob_start();
+				//ob_start();
 				BooBoo::exceptionHandler($exception);
-				$buffer = ob_get_contents();
-				ob_end_clean();
+				exit(1);
+				//$buffer = ob_get_contents();
+				//ob_end_clean();
 
 				// By creating a new response object, all the headers set by BooBoo get resynced
-				$response = new \HTTP\Response();
+				//$response = new \HTTP\Response();
 
-				return $response->overwrite($buffer);
+				//return $response->overwrite($buffer);
 			};
 		};
 

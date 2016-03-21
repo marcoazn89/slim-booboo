@@ -19,7 +19,9 @@ $logger = (new \Monolog\Logger('TEST'))
 
 $app->add(new \SlimBooboo\Middleware(
   $app,
+  [],
   $logger,
+  true,
   function() { error_log("testing callable");},
   [E_NOTICE, E_DEPRECATED]
 ));
