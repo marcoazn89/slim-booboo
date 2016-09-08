@@ -26,11 +26,10 @@ class Middleware {
 		// Overwrite the errorHandler
 		$container['errorHandler'] = function($c) {
 			return function($request, $response, $exception) {
-
+				BooBoo::alwaysExit(false);
 				// Store the BooBoo error body response in a buffer
 				//ob_start();
-				BooBoo::exceptionHandler($exception);
-				exit(1);
+				return BooBoo::exceptionHandler($exception);
 				//$buffer = ob_get_contents();
 				//ob_end_clean();
 
